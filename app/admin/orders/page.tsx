@@ -1,6 +1,10 @@
+import Heading from "@/components/ui/Heading"
+
 const OrdersPage = () => {
     return (
-        <div>Orders</div>
+        <>
+            <Heading>Administrar órdenes</Heading>
+        </>
     )
 }
 export default OrdersPage
