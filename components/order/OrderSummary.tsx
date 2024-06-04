@@ -12,6 +12,7 @@ const OrderSummary = () => {
 
     const order = useStore(state => state.order);
     const total = useMemo(() => order.reduce((total, item) => total + (item.quantity * item.price), 0), [order]);
+    const cleanOrder = useStore(state => state.cleanOrder);
 
     const handleCreateOrder = async (formData: FormData) => {
         const data = {
@@ -34,7 +35,12 @@ const OrderSummary = () => {
             response.errors.forEach((issue) => {
                 toast.error(issue.message);
             })
+
+            return;
         }
+
+        toast.success('Pedido realizado correctamente');
+        cleanOrder();
     }
 
     return (
