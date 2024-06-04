@@ -1,9 +1,10 @@
+import Heading from "@/components/ui/Heading";
 
 const ProductsPage = () => {
     console.log('Desde el servidor');
     return (
         <>
-            <div>ProductsPage</div>
+            <Heading>Administrar productos</Heading>
         </>
     )
 };
