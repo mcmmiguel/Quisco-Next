@@ -13,21 +13,25 @@ const AddProductForm = ({ children }: { children: React.ReactNode }) => {
         const data = {
             name: formData.get('name'),
             price: formData.get('price'),
-            category: formData.get('categoryId'),
+            categoryId: formData.get('categoryId'),
             image: formData.get('image')
         }
 
         const result = ProductSchema.safeParse(data);
 
         if (!result.success) {
-            result.error.issues.forEach(issue => toast.error(issue.message));
-            return;
+            result.error.issues.forEach(issue => {
+                toast.error(issue.message)
+            })
+            return
         }
 
-        const response = await createProduct(result.data);
+        const response = await createProduct(result.data)
         if (response?.errors) {
-            response.errors.forEach(issue => toast.error(issue.message));
-            return;
+            response.errors.forEach(issue => {
+                toast.error(issue.message)
+            })
+            return
         }
 
         toast.success('Producto creado correctamente');
