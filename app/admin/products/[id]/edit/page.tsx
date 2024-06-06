@@ -1,4 +1,9 @@
+import EditProductForm from "@/components/products/EditProductForm";
+import ProductForm from "@/components/products/ProductForm";
+import GoBackButton from "@/components/ui/GoBackButton";
+import Heading from "@/components/ui/Heading";
 import { prisma } from "@/src/lib/prisma"
+import Link from "next/link";
 import { notFound, redirect } from "next/navigation";
 
 async function getProductById(id: number) {
@@ -22,9 +27,15 @@ const EditProductsPage = async ({ params }: { params: { id: string } }) => {
     }
 
     return (
-        <div>
+        <>
+            <Heading>Editar producto: {product.name}</Heading>
 
-        </div>
+            <GoBackButton />
+
+            <EditProductForm>
+                <ProductForm product={product} />
+            </EditProductForm>
+        </ >
     )
 }
 export default EditProductsPage
